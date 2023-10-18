@@ -1,16 +1,19 @@
-#ifndef MAIN_H
 #include "main.h"
 
 /**
- * printf_char - function that prints char
- * @val: arguements.
- * Return: 1.
+ * print_char - Prints a char
+ * @types: List a of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: Width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
  */
-int printf_char(va_list val)
+int print_char(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	char str;
+	char c = va_arg(types, int);
 
-	str = va_arg(val, int);
-	_putchar(str);
-	return(1);
+	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
